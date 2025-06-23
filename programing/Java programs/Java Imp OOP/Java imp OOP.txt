@@ -1,0 +1,343 @@
+JAVA IMP Interviview Questions 🙋
+
+1) Static member function and variavles.
+	Static function - we can access it an only created class and we call  it only Class"." Operator Name of Function/Method. we can initial a static variable as value we can't change it again.
+Syntax - 
+class_name.methodname();
+Ex-
+class staticmember{
+static void fun(){
+ int x = 8;
+System.out.println(x);
+}
+}
+class Static{
+public static void main(String[] args){
+staticmember.fun();
+}
+}
+o/p - 8
+*****************************************************************************
+
+2) Constructor
+ Constructor has no any return type
+  1.Default Constructor 
+  2.Parameterized Constructor
+  3.Copy Constructor
+*****************************************************************************
+3) Constructor Is private in class is private Why?
+ Ans- We can created a constructor as private in class, to restrict create a object of that class.
+Ex-
+class Construct{
+int x;
+private Construct(){
+
+}
+}
+class temp{
+public static void main(String args[]){
+Construct c = new Construct();
+}
+}
+ error : temp.java:20: error: Construct() has private access in Construct
+*****************************************************************************
+4) Copy Constructor in C++
+   Ans- It is created by using Reference variable. It can execute when the one object is called 
+That time one block copy of constructor is pass as a argument in other constructor.
+// copy Constructor using reference variable //
+class copyconstructor{
+int x, y;
+copyconstructor(int a, int b){
+  x = a;
+  y = b;
+System.out.println(x+" "+y);
+}
+copyconstructor(copyconstructor c){
+c.x++;
+c.y++;
+System.out.println(c.x+" "+c.y);
+}
+}
+class temp{
+public static void main(String[] args){
+copyconstructor c = new copyconstructor(1,2);
+copyconstructor(c);
+}
+}
+ o/p - 1 2
+       2 3	
+*****************************************************************************
+5) Inheritance In C++
+	1.Single-Level Inheritance
+	2.Multi-level inheritance
+	3.Hibrid Inheritance 
+	4.Hierarchical Inheritance
+Syntax - child_ class extends parent_ class
+//The property of child class with help of parent class is called Inheritance.
+
+//1.Single Ex:
+//  class A{
+//  }
+//  class B:A{
+//  }
+//2.Multilevel
+//  class A{
+//  }
+//  class B:A{
+//  }
+// class C:B{
+// }
+//3.Hierarchical
+//  class A{
+//  }
+//  class B:A{
+//  }
+// class C:A{
+// }
+//4.Hybrid
+//  class A{
+//  }
+//  class B{
+//  }
+// class C:A,B{
+// }
+// class D:C{
+// }
+// class E:D{
+// }
+class a{
+int x, y;
+
+*5.Multiple Inheritance is not present in java because of abiguity
+but we can access it using interfase.
+*****************************************************************************
+*6)Wraper Class VERY IMP
+//java is "almost" 100% Object Oriented Language but not 100%
+//Because of predefine data Types is used in java
+//We can create it an 100% oop using Wrapper classes.
+//Wraper classes is help to you used an classes which is already present in java
+public class WraperClass {
+    public static void main(String[] args) {
+        // int as class Integer
+        // Type-1 we can used it an paseint function
+        // parseInt method is static in the Integer class so
+        // we can access it an using 'dot' Operater
+        // syntax Integer.paseInt();
+        // it can help to you convert any data string in integer form.
+	Ex-
+        int x = Integer.parseInt("123");    //static function
+        System.out.println(x);
+
+        double d = Double.parseDouble("56"); //static function
+        System.out.println(d);
+
+        //type-2
+        // you can also convert a binary number into integer of base 10
+        // using of valueof function
+        //static function
+	Ex-
+        Integer i1 = Integer.valueOf("1000110101010110110010100100101", 2); // 1185637669 //static function
+        int i2 = i1.intValue(); //non static it is instance member function 
+        System.out.println(i2);
+
+        //static function
+        Long l1 = Long.valueOf("111101010101010101010101010101010110101110101011011010101010110", 2); // 8839064868839863638 
+        long l2 = l1.longValue();   //non static it is instance member function 
+        System.out.println(l2);
+    }
+}
+*****************************************************************************
+7) Constructor Using Inheritance: 
+Constructer is Executed when parent class and child class are created that time the child class object is created. The calling sequence is child to parent but the execution sequence is parent to child.
+Destructor is not JAVA But Garbage collector is in JAVA
+*Destructor- Destructor executed is first call child constructor and then Parent constructor.
+And Execute sequence is Child To parent.
+EX-
+class Parent{
+Parent(){
+System.out.println("Parent class executed");
+}
+}
+class Child extends Parent{
+//Here compiler automatically type the "super" keyword and go to parent class
+Child(){
+System.out.println("Child Class executed");
+}
+}
+class temp{
+public static void main(String[] args){
+Child c = new Child();
+}
+}
+O/P-Parent class executed
+Child Class executed
+*****************************************************************************
+8) Command Line Arguments
+In JAVA programming the command line arguments is executed using run the 
+programe in command prompt in our PC/LAPTOP.
+We can use command line argument by the user through input,at program run time 
+user can pass the arguments.
+Ex-
+class temp{
+public static void main(String []args){
+for(int i = 0; i < args.length; i++){
+System.out.println(args[i]);
+}
+}
+}
+*****************************************************************************
+9) Access Modifiers/Specifiers
+	1.Public
+	2.Private
+	3.Protected
+	4.Default
+
+1. Public- Is a type of modifier wich is access anywhere that means when we can create an any variable as public that variable or method can access anywhere.We can access it an any package to another Package. 
+Ex-
+class AccessModifiers{
+public void Fun(){
+int x = 8;
+}
+} 
+class temp{
+puclic static void main(String[] args){
+AccessModifiers a = new AccessModifiers();
+a.Fun();
+System.out.println(a.x);
+}
+}
+O/P- 8
+
+2. Private- It is type of access specifiers which access only within That class which created an variable as private. We can access it an using that class public member functions.
+Ex-
+class Private{
+private int x;
+public void fun(){
+x = 9;
+System.out.println(x);
+}
+}
+class temp {
+public static void main(String[] args){
+Private p = new Private();
+p.fun();
+}
+}
+O/P- 9
+
+3. Protected- It is type of access specifier which is same as private. It is not access any where but it can access by using the Derived(child) class of the Parent class. When the child class created using inheritance that time we can used the protected variables or member functions.
+As well as we can access protected variable in the other package,by using the another package of parent class to child class.When the child class created using inheritance that time we can used the protected variables or
+member functions.
+EX-
+package Package1;
+public class Amit{
+	private int x,y;
+	public void setData(int p,int q)
+	{
+		x=p; y=q;
+		
+	}
+	public void Display()
+	{
+		System.out.println(x);
+		System.out.println(y);
+	}
+}
+
+package Package2;
+import Package1.*;
+class Sumit
+{
+	public static void main(String []args)
+	{
+		Amit a1 = new Amit();
+		a1.setData(5,6);
+		a1.Display();
+	}
+}
+
+// Command for create package folder
+// javac -d . name_of_1file.java
+// compile package2 command
+// javac -d . name_of_2file.java
+// for run- java name_of_2file
+
+4) Default - when we dont write any access mode on the any variable that time this known as the default.
+We can access it an only within the programe which is executed.
+Ex-
+
+*****************************************************************************
+10) Method/Function Overloading And Overriding 
+Function Overloading Is possible when one function is overloaded that mince the one function name is Demo and second Function is Demo it's name is same but one no any argument is received and second one is one argument received that time the function is overload.
+Ex - 
+class Overload(){
+void fun(){
+int x = 1;
+System.out.println(x);
+void fun(int y){
+a = y;
+System.out.println(a);
+}
+}
+}
+
+class temp{
+public static void main(String[] args)
+{
+Overload a = new Overload();
+a.fun();
+a.fun(5);
+}
+}
+O/P - 1
+      5
+
+*Method Overriding - Is possible only the different classes (Scope) when the function name is same and that functions work as well same that time the
+function is called overriding function
+
+class Parent {
+void fun(){
+int x = 1;
+System.out.println(x);
+}
+}
+class Child exetends Parent {
+void fun(){
+int a=5;
+System.out.println(a);
+}
+}
+class temp{
+public static void main(String[] args)
+{
+Child a = new Child();
+a.fun();
+}
+}
+O/P- 5
+*****************************************************************************
+11) Abstract Class 
+It is an concept that is when we are created any function in class is abstract function that time that class was declared as Abstract class. We can not instantiate(Can't create object) of that class.We can access that class members when we Override that function/method is in another child class. 
+when the any method/function in the class is declared abstract so that time the class
+also declare as abtract. 
+Ex- 
+class Abstract{
+abstract public void fun();
+int x,y;
+}
+class Override extends Abstract {
+void fun(){
+int a = 4;
+System.out.println(a);
+}
+}
+
+class temp {
+public static void main(String[] args){
+Override a = new Override();
+a.fun();
+}
+}
+O/P - 4
+*****************************************************************************
+12) Interface In JAVA VIMP

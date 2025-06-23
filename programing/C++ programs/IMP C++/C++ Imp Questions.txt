@@ -1,0 +1,441 @@
+C++ IMP Interview Questions🙋 
+
+1) Static member functions and variables.
+	Static functio - we can access it an only created class and we call 
+call it only class '::'(Scope Resolution Operater) Name of Function/Method.
+we can intial a static variable as value we can't change it again.
+Ex-
+#include<iostream>
+#include<conio.h>
+using namespace std;
+class Demo{
+public:
+static void int x;
+cout<<x<<endl;
+};
+int Demo::x=9;		//initialize the static variable
+int main(){
+Demo::x;
+}
+
+*********************************************************************
+
+2) Constructor 
+Contructor has no any treturn type
+  1.Default Constructor 
+  2.Parameterized Constructor
+  3.Copy Contructor
+
+***********************************************************************
+
+3) Constructor Is private in class is private Why?
+ Ans- We can created a constructor as private in class,
+      to restrict create a object of that class.
+	Ex:- class construct{
+		   int x;
+	     private construct(){
+		    }
+		}
+	     int main(){
+		construct c1; //we can't creat object because constructor is 			      //private
+		}
+
+************************************************************************
+
+4) Copy Contructor in C++
+   Ans- It is created by using Reference variable
+// copy Constructor using reference variable //
+#include<iostream>
+#include<conio.h>
+using namespace std;
+class Demo{
+    int x,y;
+    public:
+    Demo(Demo &a){  //copy  contructor created by refrence
+        a.x++;
+        a.y++;
+       cout<<a.x<<" "<<a.y<<endl; 
+    }
+    Demo(int p,int q){
+        x=p; y=q;
+        cout<<x<<" "<<y<<endl;
+    }
+};
+int main(){
+    Demo d1(1,2),d2(d1); // paass the d1 Object using d2 object 
+}
+
+************************************************************************
+
+5) Inheritance In C++
+	1.Single-Level Inheritance
+	2.Multi-level inheritance
+	3.Multiple Inheritance
+	4.Hibrid Inheritance 
+	5.Hierarchical Inheritance
+		
+	Inheritance Total 5 Types 
+//1.Single Ex:
+//  class A{
+//  }
+//  class B:A{
+//  }
+//2.Multilevel
+//  class A{
+//  }
+//  class B:A{
+//  }
+// class C:B{
+// }
+//3.Multiple //One exception Abiguti Confuce the child when two parrent is created 
+//  class A{
+//  }
+//  class B{
+//  }
+// class C:A,B{
+// }
+//4.Hierarchical
+//  class A{
+//  }
+//  class B:A{
+//  }
+// class C:A{
+// }
+//5.Hybrid
+//  class A{
+//  }
+//  class B{
+//  }
+// class C:A,B{
+// }
+// class D:C{
+// }
+// class E:D{
+// }
+//The property of child class with help of parent class is called Inheritance
+#include<iostream>
+#include<conio.h>
+using namespace std;
+class Samsung{
+    int keypad,mic,speaker,volum;
+    public:
+    void setValue(){
+        keypad=67;
+        mic=56;
+        speaker=90;
+        volum=23;
+    }
+};
+class Samsung2 : protected Samsung{
+int cam,display;
+public:
+void setValue2(){
+    cam=678;
+    display=34;
+    cout<<cam<<" "<<display<<endl;
+    }
+};
+int main(){
+    Samsung2 s1;
+    s1.setValue2();
+}
+
+************************************************************************
+
+6)Constructor Using Inheritance
+Constructer is Excuted when parent class and child class are crerated that time the parent class and child class are crerated.
+The calling sequence is child to parent but the execution sequence is parent 
+to child.
+
+*Dstructor- Destructor executed is first call child constructor and then 
+Parent constructor.
+And Execute sequence is Child To parent.
+Ex-
+#include<iostream>
+#include<conio.h>
+using namespace std;
+class Samsung1{
+    public:
+    	Samsung1(){
+	cout<<"Parent constructer executed"<<endl;
+    }
+~Samsung1(){
+cout<<"Parent Destructor"<<endl;
+}
+};
+class Samsung2 : public Samsung1{
+public:
+	Samsung2 : Samsung1  //When we are created child constructor
+	{
+	cout<<"Child constructer executed";
+    }
+~Samsung2(){
+cout<<"Child Destructor"<<endl;
+}
+};
+int main(){
+    Samsung2 s1;
+}
+o/p- Parent constructer executed
+Child constructer executed
+child destructor
+Parent Destructor
+
+************************************************************************
+
+7)  Command Line Arguments
+In c++ we can see that the main function is mostly return type is int.
+and main function is no any parameter received.
+We can also pass the argument in main function using two arguments
+first is 'number of command line arfuments' and second one is 'list
+of command line arguments.'
+Syntax:
+int main(iint argc, char* argv[]){........}
+OR
+int main(iint argc, char  **argv){........}
+
+Ex-
+#include<iostream>
+using namespace std;
+int main(int argc, char* argv[]){
+cout<<"You Have entered "<<argc<<" arguments"<<endl;
+for(int i=0;i<argc;i++){
+	cout<<argv[i]<<endl;
+	}
+return 0;
+}
+
+O/P- 
+cammand- g++ Main.cpp -o main(we want change it)
+./ main jeevan tambe
+
+You Have entered 3 arguments
+./ main
+jeevan 
+tambe
+
+************************************************************************
+
+8)Access Specifier's
+	1.Public
+	2.Private
+	3.Protected
+1. Public - Is a type of access modifiers which is access anywhere.
+Thath means whe we can declare a member or variable as public that
+is that variable is accessible any where of that programe.
+Ex-
+#include<iostream>
+using namespace std;
+class Demo{
+public:
+int x;
+void fun(){
+cout<<x<<endl;
+}
+}
+int main(){
+Demo d1;
+d1.x=89;
+d1.fun();
+}
+
+2.Private- It is type of access specifiers which access only whithin
+That class which created an variable as private. We can access it 
+an using that class public member functions.
+Ex-
+#include<iostream>
+using namespace std;
+class Demo{
+Private:
+int x;
+fun(int y){
+x = y;
+cout<<x;
+}
+int main(){
+Demo d1;
+d1.fun();
+}
+
+3.Protected- It is type of access specifier which is same as private.
+It is not access any where but it can access by using the Derived(child)
+class of the Parent class.When the child class created using inheritance 
+that time we can used the protected variables or meber functions.
+EX-
+#include<iostream>
+using namespace std;
+class Parent{
+Protected:
+int x;
+}
+class Child : Parent{
+fun(int y){
+x = y;
+cout<<x;
+}
+int main(){
+Child c1;
+c1.fun();
+}
+
+************************************************************************
+
+9)Funcion Overloading And Overrinding 
+Function Overloading Is possible when one function is overloaded that minse
+the one function name is Demo and second Function is Demo it's name is 
+same but one no any argument is recieved and second one is one argument recived that time the function is overload.
+Ex-
+#include<iostream>
+using namespace std;
+class Overload{
+int a;
+Public:
+ void Demo(){
+	cout<<"First Function"<<endl;
+}
+void Demo(int x){
+a = x;
+cout<<Second Function: "<<a<<endl;
+}
+};
+int main(){
+Overload a;
+a.Demo();
+a.Demo(2);
+}
+
+Function Overriding - Is posiible only the different classes(Scope)
+when the function name is same and that functions work as well same
+that time the function is called overriding function.
+Ex-
+#include<iostream>
+using namespace std;
+class Overriding{
+Public:
+void Demo(){
+cout<<"First Function"<<endl;
+}
+class Overiding
+void Demo(){
+cout<<Second Function: "<<a<<endl;
+}
+};
+int main(){
+Overload a;
+a.Demo();
+a.Demo(2);
+}
+
+************************************************************************
+
+10)Abstract Class
+It is an concept that is when we are created any fuction in class is 
+pure virtual function that time that class was declared as Abstract 
+class. We cant instantiate(Cna't ctreate object) of that class.
+Ex-
+#include<iostream>
+using namespace std;
+class Abstract{
+Public:
+virtual void Demo()=0;
+fun(){
+cout<<"Hello";
+}
+};
+class B : Abstract{
+public:
+void Demo(){
+
+}
+int main(){
+B b1;
+b1.fun();
+}
+O/P- Hello
+
+*******************
+**VERY IMP
+In the Abstract class is Constructor.
+We can created an constructer in abstract class to initialize the 
+value in private members in the abstract class.
+Ex-
+#include<iostream>
+using namespace std;
+class Bank{
+int x,y; //private
+public:
+virtual void ROI()=0;
+Bank(){
+x = 8;
+y = 9;
+cout<<"Parent Constructor"<<" x="<<x<<" y="<<y<<endl;
+}
+};
+class SavingAccount : Bank{
+public:
+void ROI(){
+
+}
+SavingAccount(){
+cout<<"Child Constructor: "<<endl;
+}
+};
+int main(){
+SavingAccount s1;
+}
+O/P-
+Parent Constructor 8 9
+Child Constructor: 
+
+************************************************************************
+
+11) This Keyword And Super Keyword
+'this' keyaword is mainly known as the when the this keyword is used in
+the any variable that is the variable is known as the that class.
+When we can use the in C++ :: scope resolution opperater[java'super'keayword] that time the variable is known as the parent class variable.
+Ex- 
+#include<iostream>
+using namespace std;
+class Parent{
+public:
+int x,y;
+void fun(){
+cout<<"Patrent x= "<<x<<"  Patrent y= "<<y<<endl;
+}
+};
+class Child :public Parent{
+int x, y;
+public:
+public:
+void fun1(int x,int y){
+this->x = x;     // Child x
+Parent::y = y;   //Parent y
+}
+void Display(){
+    cout<<"Child x= "<<x<<"  Child y= "<<y<<endl;
+}
+};
+int main(){
+Child c1;
+c1.fun1(2,3);
+c1.Display();
+c1.fun();
+// Parent p1;
+// p1.fun();
+}
+O/P-Child x= 2  Child y= 4201035
+Patrent x= 1997963885  Patrent y= 3
+
+************************************************************************
+12) Template in C++ (STL)
+
+
+************************************************************************
+
+13) Recursion (IMP)
+
+************************************************************************
+
+
+
+

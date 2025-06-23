@@ -1,0 +1,19 @@
+🎦 📽Java Project📽🎦  
+MYsql pass - JEEVAN@123tambe
+
+Chapter 1 - Install Java and Apache Netbeans Software.
+
+Chapter 2 - In Apache Software steps 
+step1- File -> New Project -> Java with maven -> Project Name.
+step2- Source Package -> com.mycompany._NameOfProject -> Righ clck -> New -> Jfarame -> NameOfFrame -> Finish.
+step3- In farame right click -> set layout -> Absolute Layout.
+step4- In farame add pannel -> add lable -> SignUp -> hange Font.
+step5- Add lables you required.
+	First Name
+	Last Name
+	Username
+	Password
+	Confirm Password
+	Date Of Birth
+	Contact No.
+step6- Add Text Fields

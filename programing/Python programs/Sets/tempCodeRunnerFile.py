@@ -1,0 +1,1 @@
+print(s1.union(s2))
